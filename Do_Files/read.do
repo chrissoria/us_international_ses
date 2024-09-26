@@ -30,6 +30,16 @@ gen married_cohab = (marst == 2) if marst != .
 
 save data/US_65_89.dta, replace
 
+***below I will create the age standardization variable***
+
+collapse (sum) perwt, by(age2) //summing by person weight instead of actual n count
+egen total_perwt = total(perwt)
+gen age_weight = perwt / total_perwt
+drop total_perwt
+
+
+export delimited using "data/us_age_weights.csv", replace
+
 clear
 
 use data/ses.dta
