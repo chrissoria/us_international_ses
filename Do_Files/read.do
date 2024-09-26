@@ -10,8 +10,23 @@ keep if (bplcountry == 23050 | bplcountry == 21080 | bplcountry == 21100 | bplco
 
 decode nativity, gen(nativity_string)
 decode race, gen(race_string)
+decode hispan, gen(hispan_string)
 
-gen native_foreign_race = nativity_string + "_" + race_string
+replace hispan_string = "hispanic" if hispan_string != "not hispanic"
+
+replace race_string = "other" if race_string != "white" & race_string != "black"
+replace race_string = race_string + " " + hispan_string
+
+replace race_string = "hispanic" if race_string == "black hispanic" | race_string == "other hispanic" | race_string == "white hispanic"
+
+replace race_string = "other" if race_string == "other not hispanic"
+
+tab race_string
+
+gen native_foreign_race = nativity_string + " " + race_string
+tab native_foreign_race
+
+gen married_cohab = (marst == 2) if marst != .
 
 save data/US_65_89.dta, replace
 
