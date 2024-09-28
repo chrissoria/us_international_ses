@@ -1,0 +1,100 @@
+---
+title: "tables"
+author: "Chris Soria"
+date: "2024-09-28"
+output: html_document
+---
+
+```{r}
+library(haven)
+library(tidyverse)
+library(xtable)
+```
+
+```{r}
+us_df <- read_dta("/Users/chrissoria/Documents/Research/us_international_ses/data/US_65_89.dta")
+
+us_df <- us_df %>%
+  mutate(bplcountry = as_factor(bplcountry))
+
+
+
+in_df <- read_dta("/Users/chrissoria/Documents/Research/us_international_ses/data/international__65_89.dta")
+```
+
+table1, featuring hispanic in their native countries
+```{r}
+table1 <- in_df %>%
+  group_by(country) %>%
+  summarise(
+    mean_married_cohab = weighted.mean(married_cohab, perwt, na.rm = TRUE),
+    mean_yrschool = weighted.mean(yrschool, perwt, na.rm = TRUE),
+    mean_sex = weighted.mean(sex, perwt, na.rm = TRUE),
+    mean_age = weighted.mean(age, perwt, na.rm = TRUE)
+  )
+
+table1
+```
+table2, featuring US migrants from the countries above
+```{r}
+create_table_for_sex <- function(sex_value) {
+  us_df %>%
+    filter(sex == sex_value) %>%
+    filter(bplcountry != "united states") %>% 
+    group_by(bplcountry) %>%
+    summarise(
+      mean_age = weighted.mean(age, perwt, na.rm = TRUE),
+      mean_married_cohab = weighted.mean(married_cohab, perwt, na.rm = TRUE),
+      mean_english_speaker = weighted.mean(english_speaker, perwt, na.rm = TRUE),
+      mean_is_citizen = weighted.mean(is_citizen, perwt, na.rm = TRUE),
+      mean_age_at_immigration = weighted.mean(age_at_immigration, perwt, na.rm = TRUE),
+      mean_years_in_us = weighted.mean(years_in_us, perwt, na.rm = TRUE),
+      mean_less_than_primary_completed = weighted.mean(less_than_primary_completed, perwt, na.rm = TRUE),
+      mean_primary_completed = weighted.mean(primary_completed, perwt, na.rm = TRUE),
+      mean_secondary_completed = weighted.mean(secondary_completed, perwt, na.rm = TRUE),
+      mean_university_completed = weighted.mean(university_completed, perwt, na.rm = TRUE)
+    ) %>%
+    pivot_longer(cols = -bplcountry, names_to = "variable", values_to = "value") %>%
+    pivot_wider(names_from = bplcountry, values_from = value) %>%
+    mutate(variable = recode(variable,
+      mean_age = "Average Age",
+      mean_married_cohab = "Percent Married/Cohabiting",
+      mean_english_speaker = "Percent English Speakers",
+      mean_is_citizen = "Percent Citizen",
+      mean_age_at_immigration = "Mean Age at Immigration",
+      mean_years_in_us = "Average Years in US",
+      mean_less_than_primary_completed = "Percent Less than Primary Completed",
+      mean_primary_completed = "Percent Primary Completed",
+      mean_secondary_completed = "Percent Secondary Completed",
+      mean_university_completed = "Percent University Completed"
+    ))
+}
+
+table_sex_1 <- create_table_for_sex(1)
+table_sex_2 <- create_table_for_sex(2)
+
+combined_table <- bind_rows(
+  table_sex_2, #females first
+  table_sex_1 #males second
+)
+
+combined_table <- combined_table %>%
+  mutate(across(where(is.numeric), round, digits = 2)) %>% 
+  mutate(across(everything(), ~ as.character(.))) %>%    
+  mutate(across(everything(), ~ ifelse(. == "NaN", "-", .))) %>%   
+mutate(across(everything(), ~ ifelse(. == "0", "-", .)))
+
+print(combined_table)
+
+table2_code <- xtable(combined_table, caption = "Summary Statistics by Country and Sex", 
+                      label = "table2")
+
+
+sink("/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex")
+print(table2_code, type = "latex", 
+      caption.placement = "top",
+      size = "\\small")
+
+sink()
+```
+
