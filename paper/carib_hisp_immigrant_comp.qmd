@@ -1,0 +1,47 @@
+---
+#title: "Research note: Social networks are the best aggregate predictor of U.S. county-level death rates"
+title: |
+  Sociodemographic Comparison of Caribbean Hispanic Older Adult Immigrants in the U.S. and Origin Countries
+format:
+  jasa-pdf:
+    keep-tex: true  
+    journal:
+      blinded: false
+  jasa-html: default
+date: last-modified
+author:
+  - name: William H. Dow
+  - name: Chris Soria
+  - name: Ty Dow
+    acknowledgements: | 
+      Any acknowledgements? 
+      
+    affiliations:
+      - name: University of California, Berkeley
+abstract: |
+  Caribbean and nearby countries are key sources of Hispanic immigrants to the U.S. Recent studies, including the Caribbean American Dementia and Aging Study (CADAS), have collected data on healthy aging in the Dominican Republic, Cuba, and Puerto Rico. Other significant emigrant countries include Colombia, El Salvador, Guatemala, and Honduras. Immigrants from these regions have diverse life experiences. This paper analyzes the latest Census microdata from these countries using IPUMS, comparing it with U.S. Census and American Community Survey data. We focus on education, marital status, and co-residence of older adults in each country, compared to their counterparts in the U.S., disaggregated by sex and age group. In the U.S., we also examine cohort entry and citizenship status. This data will be combined with institutional data to explore the varied experiences and well-being of older adult immigrants, forming hypotheses for future research on Caribbean Hispanic older adult health determinants.
+bibliography: us_international_ses.bib  
+linestretch: 1.2
+---
+
+## Introduction and Background {#sec-intro}
+
+
+## Data and Methods
+
+
+
+## Preliminary Results
+
+### Hispanic older adults in their native countries
+
+
+### Hispanic older adults as migrants in the US
+
+### Race and nativity in US migrants
+
+
+
+## Discussion
+
+# Appendix
