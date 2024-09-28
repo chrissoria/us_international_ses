@@ -62,8 +62,7 @@ replace years_in_us = . if citizen == 2
 gen age_at_immigration = age - years_in_us
 replace age_at_immigration = . if citizen == 2
 
-gen is_citizen = 1 if citizen == 2 & bplcountry != 24040
-replace is_citizen = 0 if citizen != 2 & bplcountry != 24040
+gen is_citizen = (citizen == 3)
 
 gen male = (sex == 1)
 gen female = (sex == 2)
