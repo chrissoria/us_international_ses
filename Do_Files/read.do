@@ -52,18 +52,23 @@ label define category_labels 1 "Hispanic Black Foreign" ///
 label values race_native_category category_labels
 
 tab native_foreign_race
-tab race_native_category
+tab race_native_category, miss
 
 gen married_cohab = (marst == 2) if marst != .
 
 gen years_in_us = 2020 - yrimm
 replace years_in_us = . if citizen == 2
 
-gen age_at_immigration = age - yrimm
+gen age_at_immigration = age - years_in_us
 replace age_at_immigration = . if citizen == 2
 
 gen is_citizen = 1 if citizen == 2 & bplcountry != 24040
 replace is_citizen = 0 if citizen != 2 & bplcountry != 24040
+
+gen male = (sex == 1)
+gen female = (sex == 2)
+
+gen english_speaker = (speakeng == 1)
 
 decode edattain, gen(edattain_string)
 

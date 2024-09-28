@@ -17,7 +17,7 @@ use data/US_65_89.dta
 preserve
 
 *nativities of interest in the US as migrants
-collapse (mean) sex age married_cohab speakeng is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(bplcountry)
+collapse (mean) female age married_cohab english_speaker is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(bplcountry)
 list
 export delimited using "tables/US_nativity_table.csv", replace
 
@@ -26,7 +26,7 @@ restore
 preserve
 *nativities of interest in the US as migrants by sex
 
-collapse (mean) age married_cohab speakeng is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(bplcountry sex)
+collapse (mean) age married_cohab english_speaker is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(bplcountry sex)
 list
 export delimited using "tables/US_nativity_table_by_sex.csv", replace
 
@@ -34,7 +34,7 @@ restore
 
 preserve
 
-collapse (mean) sex age married_cohab speakeng is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(race_native_category)
+collapse (mean) female age married_cohab english_speaker is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(race_native_category)
 list
 
 export delimited using "tables/US_racial_nativity_table.csv", replace
