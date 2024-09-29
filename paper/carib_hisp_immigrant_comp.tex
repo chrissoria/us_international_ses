@@ -127,7 +127,16 @@
 % preamble.tex
 \usepackage{lmodern} % Use Latin Modern, an enhanced version of Computer Modern
 \usepackage{graphicx} 
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
 \usepackage{pdflscape} % landscape
+
+\fancypagestyle{landscape}{%
+  \fancyhf{} % Clear all header and footer fields
+  \fancyfoot[C]{\rotatebox{90}{\thepage}} % Rotate and center page number
+  \renewcommand{\headrulewidth}{0pt} % Remove header line
+  \renewcommand{\footrulewidth}{0pt} % Remove footer line
+}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -263,20 +272,31 @@ inform future comparative research on Hispanic healthy aging.
 \subsubsection{Hispanic older adults in their native
 countries}\label{hispanic-older-adults-in-their-native-countries}
 
+\newpage
+
 \subsubsection{Hispanic older adults as migrants in the
 US}\label{hispanic-older-adults-as-migrants-in-the-us}
-
-\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex}
 
 \subsubsection{Race and nativity in US
 migrants}\label{race-and-nativity-in-us-migrants}
 
 \subsection{Discussion}\label{discussion}
 
-\subsection{Appendix}\label{appendix}
-
 \newpage
 
+\subsection{Appendix}\label{appendix}
+
+\begin{landscape}
+\thispagestyle{landscape} % Apply custom pagestyle to this page
+\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table1.tex}
+: Alightment table {tbl-colwidths="[20]}
+\end{landscape}
+
+\newpage
+\begin{landscape}
+\thispagestyle{landscape}
+\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex}
+\end{landscape}
 \newpage
 
 \section*{References}\label{references}

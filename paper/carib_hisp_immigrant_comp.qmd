@@ -7,7 +7,9 @@ format:
     documentclass: article
     latex-engine: xelatex
     include-in-header: preamble.tex
+        
 date: last-modified
+tbl-cap-location: top
 author:
   - name: William H. Dow
   - name: Chris Soria
@@ -38,13 +40,16 @@ The paper is designed to support hypothesis generation for international compara
 
 ## Preliminary Results
 
+
+
 ### Hispanic older adults in their native countries
 
+
+
+
+\newpage
 ### Hispanic older adults as migrants in the US
 
-```{=latex}
-\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex}
-```
 
 
 ### Race and nativity in US migrants
@@ -53,12 +58,21 @@ The paper is designed to support hypothesis generation for international compara
 
 ## Discussion
 
-## Appendix
-
 \newpage
 
+## Appendix
 
+\begin{landscape}
+\thispagestyle{landscape} % Apply custom pagestyle to this page
+\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table1.tex}
+: Alightment table {tbl-colwidths="[20]}
+\end{landscape}
 
+\newpage
+\begin{landscape}
+\thispagestyle{landscape}
+\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex}
+\end{landscape}
 \newpage
 
 # References

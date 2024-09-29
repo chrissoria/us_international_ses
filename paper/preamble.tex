@@ -1,4 +1,13 @@
 % preamble.tex
 \usepackage{lmodern} % Use Latin Modern, an enhanced version of Computer Modern
 \usepackage{graphicx} 
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
 \usepackage{pdflscape} % landscape
+
+\fancypagestyle{landscape}{%
+  \fancyhf{} % Clear all header and footer fields
+  \fancyfoot[C]{\rotatebox{90}{\thepage}} % Rotate and center page number
+  \renewcommand{\headrulewidth}{0pt} % Remove header line
+  \renewcommand{\footrulewidth}{0pt} % Remove footer line
+}
