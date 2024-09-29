@@ -36,7 +36,7 @@ The paper is designed to support hypothesis generation for international compara
 
 ## Data and Methods
 
-
+Census data for this study were obtained from IPUMS International, which provided harmonized datasets for Colombia, Cuba, Dominican Republic, El Salvador, Guatemala, Honduras, Mexico, Puerto Rico, and the United States.
 
 ## Preliminary Results
 
