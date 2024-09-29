@@ -76,17 +76,27 @@ gen primary_completed = (edattain_string == "primary completed")
 gen secondary_completed = (edattain_string == "secondary completed")
 gen university_completed = (edattain_string == "university completed")
 
-save data/US_65_89.dta, replace
-
+preserve
 ***below I will create the age standardization variable***
 
 collapse (sum) perwt, by(age2) //summing by person weight instead of actual n count
 egen total_perwt = total(perwt)
 gen age_weight = perwt / total_perwt
 drop total_perwt
+drop perwt
 
+* Summarize age_weight to check if it sums to 1
+summarize age_weight
 
 export delimited using "data/us_age_weights.csv", replace
+save data/us_age_weights.dta, replace
+restore
+
+merge m:1 age2 using us_age_weights.dta
+
+gen perwt_age_standardized = perwt * age_weight
+
+save data/US_65_89.dta, replace
 
 clear
 

@@ -22,15 +22,22 @@ us_df <- us_df %>%
 in_df <- read_dta("/Users/chrissoria/Documents/Research/us_international_ses/data/international__65_89.dta")
 ```
 
+```{r}
+sum(age_weights$age_weight) #sums to 1
+
+in_df <- left_join(in_df, age_weights, by = "age2") %>% 
+  mutate(perwt_age_standardized = perwt * age_weight)
+```
+
 table1, featuring hispanic in their native countries
 ```{r}
 table1 <- in_df %>%
   group_by(country) %>%
   summarise(
-    mean_married_cohab = weighted.mean(married_cohab, perwt, na.rm = TRUE),
-    mean_yrschool = weighted.mean(yrschool, perwt, na.rm = TRUE),
-    mean_sex = weighted.mean(sex, perwt, na.rm = TRUE),
-    mean_age = weighted.mean(age, perwt, na.rm = TRUE)
+    mean_married_cohab = weighted.mean(married_cohab, perwt_age_standardized, na.rm = TRUE),
+    mean_yrschool = weighted.mean(yrschool, perwt_age_standardized, na.rm = TRUE),
+    mean_sex = weighted.mean(sex, perwt_age_standardized, na.rm = TRUE),
+    mean_age = weighted.mean(age, perwt_age_standardized, na.rm = TRUE)
   )
 
 table1
