@@ -76,7 +76,8 @@ gen primary_completed = (edattain_string == "primary completed")
 gen secondary_completed = (edattain_string == "secondary completed")
 gen university_completed = (edattain_string == "university completed")
 
-preserve
+save data/US_65_89.dta, replace
+
 ***below I will create the age standardization variable***
 
 collapse (sum) perwt, by(age2) //summing by person weight instead of actual n count
@@ -90,13 +91,6 @@ summarize age_weight
 
 export delimited using "data/us_age_weights.csv", replace
 save data/us_age_weights.dta, replace
-restore
-
-merge m:1 age2 using us_age_weights.dta
-
-gen perwt_age_standardized = perwt * age_weight
-
-save data/US_65_89.dta, replace
 
 clear
 
@@ -104,9 +98,24 @@ use data/ses.dta
 
 keep if age > 64 & age < 90
 
+gen male = (sex == 1)
+gen female = (sex == 2)
+
+decode edattain, gen(edattain_string)
+
+gen less_than_primary_completed = (edattain_string == "Less than primary completed")
+gen primary_completed = (edattain_string == "Primary completed")
+gen secondary_completed = (edattain_string == "Secondary completed")
+gen university_completed = (edattain_string == "University completed")
+gen education_unknown = (edattain_string == "Unknown")
+
 gen married_cohab = (marst == 2) if marst != .
 
 *keep if country != 840
+
+merge m:1 age2 using data/us_age_weights.dta
+
+gen perwt_age_standardized = perwt * age_weight
 
 save data/international__65_89.dta, replace
 

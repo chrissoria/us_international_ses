@@ -6,7 +6,7 @@ capture log close
 
 use data/international__65_89.dta
 
-collapse (mean) married_cohab yrschool sex age [aweight=perwt], by(country)
+collapse (mean) female married_cohab less_than_primary_completed primary_completed secondary_completed university_completed age [aweight=perwt_age_standardized], by(country)
 list
 export delimited using "tables/I_nativity_table.csv", replace
 
@@ -17,7 +17,7 @@ use data/US_65_89.dta
 preserve
 
 *nativities of interest in the US as migrants
-collapse (mean) female age married_cohab english_speaker is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed [aweight=perwt], by(bplcountry)
+collapse (mean) female age married_cohab english_speaker is_citizen age_at_immigration years_in_us less_than_primary_completed primary_completed secondary_completed university_completed education_unknown [aweight=perwt], by(bplcountry)
 list
 export delimited using "tables/US_nativity_table.csv", replace
 
