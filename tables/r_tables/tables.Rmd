@@ -32,7 +32,6 @@ table1, featuring hispanic in their native countries
 create_table_for_sex_international <- function(sex_value) {
   in_df %>%
     filter(sex == sex_value) %>%
-    filter(country != "United States") %>% 
     group_by(country) %>%
     summarise(
     mean_age = mean(age, na.rm = TRUE),
@@ -60,8 +59,8 @@ table1_sex_1 <- create_table_for_sex_international(1)
 table1_sex_2 <- create_table_for_sex_international(2)
 
 combined_table1 <- bind_rows(
-  table1_sex_1, #females first
-  table1_sex_2 #males second
+  table1_sex_2, #females first
+  table1_sex_1 #males second
 )
 
 combined_table1 <- combined_table1 %>%
@@ -82,7 +81,7 @@ table_md <- kbl(combined_table1, format = "markdown", label = "tab:table1", capt
 writeLines(as.character(table_md), "/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table.md")
 
 table1_code <- xtable(combined_table1, caption = "Summary Statistics by Country and Sex For Hispanics in Their Native Countries", 
-                      align = "ll|l|llllllll",
+                      align = "ll|l|lllllllll",
                       label = "table1")
 
 
