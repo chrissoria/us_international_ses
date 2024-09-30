@@ -124,19 +124,176 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-% preamble.tex
-\usepackage{lmodern} % Use Latin Modern, an enhanced version of Computer Modern
-\usepackage{graphicx} 
-\usepackage{adjustbox}
-\usepackage{fancyhdr}
-\usepackage{pdflscape} % landscape
+%% tempate from https://arxiv.org/abs/2007.12702
 
-\fancypagestyle{landscape}{%
-  \fancyhf{} % Clear all header and footer fields
-  \fancyfoot[C]{\rotatebox{90}{\thepage}} % Rotate and center page number
-  \renewcommand{\headrulewidth}{0pt} % Remove header line
-  \renewcommand{\footrulewidth}{0pt} % Remove footer line
-}
+\usepackage[toc,page,header]{appendix}
+\renewcommand\appendixname{Supplemental Information}
+\renewcommand\appendixtocname{Supplemental Information}
+
+\usepackage{minitoc}
+\usepackage{framed}
+
+%% set colors 
+\usepackage{xcolor}
+\newcommand\red[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\black}[1]{\textcolor{black}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\green}[1]{\textcolor{olive}{#1}}
+\newcommand{\white}[1]{\textcolor{white}{#1}}
+\newcommand{\bblue}[1]{\textbf{\textcolor{blue}{#1}}}
+\newcommand{\bgreen}[1]{\textbf{\color{olive}{#1}}}
+
+\usepackage{comment}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+\usepackage{array}
+\setcounter{tocdepth}{2}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{placeins}
+\usepackage{cancel}
+\usepackage{pdfpages}
+\definecolor{newcolor}{rgb}{0.45,0.51,0.87}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = olive,
+            anchorcolor = black]{hyperref}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{amsmath,amsfonts,bm,mathtools,physics,graphicx,longtable,booktabs}
+\usepackage{lscape}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\simind}{\stackrel{\text{ind.}}{\sim}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\bA}{\bm{A}}
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bD}{\bm{D}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bQ}{\bm{Q}}
+\newcommand{\bR}{\bm{R}}
+\newcommand{\bU}{\bm{U}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bX}{\bm{X}} 
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bS}{\bm{S}}
+\newcommand{\bs}{\bm{s}}
+\newcommand{\bY}{\bm{Y}}
+\newcommand{\bz}{\bm{z}}
+\newcommand{\bZ}{\bm{Z}}
+\newcommand{\inty}{\infty}
+\newcommand{\inft}{\infty}
+\newcommand{\bbeta}{\bm\beta}
+\newcommand{\bgamma}{\bm\gamma}
+\newcommand{\bdelta}{\bm\delta}
+\newcommand{\bepsilon}{\bm\epsilon}
+\newcommand{\bLambda}{\bm\Lambda}
+\newcommand{\btheta}{\bm\theta}
+\newcommand{\bnu}{\bm\nu}
+\newcommand{\bmu}{\bm\mu}
+\newcommand{\bxi}{\bm\xi}
+\newcommand{\bzeta}{\bm\zeta}
+\newcommand{\bOmega}{\bm\Omega}
+\newcommand{\oracle}{\mathrm{oracle}}
+\newcommand{\ridge}{\mathrm{penalty}}
+\newcommand{\sdf}{\mathrm{subset}}
+\newcommand{\wndf}{\mathrm{wn}}
+\newcommand{\pndf}{\mathrm{pm}}
+\newcommand{\full}{\mathrm{full}}
+\newcommand{\deconf}{\mathrm{deconf}}
+\newcommand{\naive}{\mathrm{na\ddot{\i}ve}}
+\newcommand{\nonlinear}{\mathrm{nonlinear}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\plim}{\mathit{p}-lim}
+\renewcommand{\d}{\, \mathrm{d}}
+\newcommand{\I}{I}
+\newcommand{\Prob}{P}
+\newtheorem{com}{Comment}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\newtheorem{ass}{Assumption}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\m}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\snorm}[1]{||#1||}
+\newcommand{\indep}{\mbox{$\perp\!\!\!\perp$}}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+\usepackage{lineno}
+\usepackage{afterpage}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+
+%% set colors 
+
+\usepackage{xcolor}
+\definecolor{Orange}{rgb}{1,0.5,0}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{Green}{rgb}{0,0.65,0.5}
+\definecolor{Purple}{rgb}{0.75,0,1}
+\definecolor{babypink}{rgb}{0.96, 0.76, 0.76}
+\definecolor{azure}{rgb}{0,0.49,1}
+\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
+\definecolor{Pink}{RGB}{255, 102, 204}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\newcommand{\todo}[1]{\textsf{\textbf{\textcolor{Orange}{[[TODO: #1]]}}}}
+\newcommand{\verify}[1]{\textsf{\textbf{\textcolor{red}{[[Verify: #1]]}}}}
+\newcommand{\chris}[1]{\textsf{\textbf{\textcolor{azure}{[[Chris: #1]]}}}}
+\newcommand{\casey}[1]{\textsf{\textbf{\textcolor{Green}{[[Casey: #1]]}}}}
+
+%% "clever" reference package 
+\usepackage[nameinlink, capitalize, noabbrev]{cleveref}
+\Crefname{appsec}{appendix}{appendices}
+
+%% custom command for adding in figure / table place holders
+\newcommand\PlaceInsert[1]{%
+  \begin{center}
+  \framebox{\cref{#1} about here.}
+  \end{center}
+\bigskip}
+
+
+  \def\fillandplacepagenumber{%
+ \par\pagestyle{empty}%
+ \vbox to 0pt{\vss}\vfill
+ \vbox to 0pt{\baselineskip0pt
+   \hbox to\linewidth{\hss}%
+   \baselineskip\footskip
+   \hbox to\linewidth{%
+     \hfil\thepage\hfil}\vss}}
+
+% %% bibliography 
+% \usepackage{babel}% Recommended
+% \usepackage{csquotes}% Recommended
+% \usepackage[style=apa]{biblatex}
+% \addbibresource{bunmd_paper.bib} % Syntax for version >= 1.2
+% \bibliography{<mybibfile>}% ONLY selects .bib file; syntax for version <= 1.1b
+
+\usepackage[margin = 1in]{geometry}
+\usepackage{pdflscape} % to make rotate landscape page
+\usepackage{tabularx}
+\usepackage{enumitem}
+
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -200,7 +357,7 @@
 \title{Sociodemographic Comparison of Caribbean Hispanic Older Adult
 Immigrants in the U.S. and Origin Countries}
 \author{William H. Dow \and Chris Soria \and Ty Dow}
-\date{2024-09-28}
+\date{2024-09-29}
 
 \begin{document}
 \maketitle
@@ -267,10 +424,17 @@ inform future comparative research on Hispanic healthy aging.
 
 \subsection{Data and Methods}\label{data-and-methods}
 
+Census data for this study were obtained from IPUMS International, which
+provided harmonized datasets for Colombia, Cuba, Dominican Republic, El
+Salvador, Guatemala, Honduras, Mexico, Puerto Rico, and the United
+States.
+
 \subsection{Preliminary Results}\label{preliminary-results}
 
 \subsubsection{Hispanic older adults in their native
 countries}\label{hispanic-older-adults-in-their-native-countries}
+
+As shown in (\textbf{table1?}), \ldots{}
 
 \newpage
 
@@ -284,20 +448,109 @@ migrants}\label{race-and-nativity-in-us-migrants}
 
 \newpage
 
+\begin{landscape}
+\begin{table}[h!]
+\centering
+\caption{Summary Statistics by Country and Sex For Hispanics in Their Native Countries} 
+
+\begingroup\small
+\begin{tabular}{l|l|llllllll}
+  \hline
+Gender & Demographics & Colombia & Cuba & Dominican Republic & El Salvador & Guatemala & Honduras & Mexico & Puerto Rico \\ 
+  \hline
+Women & Age & 72.8 & 73.35 & 73.12 & 73.5 & 73.03 & 72.97 & 73.44 & 73.43 \\ 
+   & Married/Cohabiting & 0.68 & 0.68 & 0.69 & 0.73 & 0.81 & 0.74 & 0.75 & 0.68 \\ 
+   & Less than Primary & 0.58 & 0.2 & 0.69 & 0.76 & 0.81 & 0.84 & 0.41 & 0.21 \\ 
+   & Primary & 0.26 & 0.5 & 0.2 & 0.16 & 0.14 & 0.1 & 0.37 & 0.3 \\ 
+   & Secondary & 0.06 & 0.23 & 0.06 & 0.05 & 0.03 & 0.04 & 0.1 & 0.36 \\ 
+   & University & 0.05 & 0.08 & 0.05 & 0.03 & 0.03 & 0.01 & 0.12 & 0.13 \\ 
+   & Unknown & 0.05 & - & - & - & - & - & - & - \\ 
+  Men & Age & 73.03 & 73.7 & 73.49 & 73.57 & 72.99 & 72.92 & 73.52 & 74.04 \\ 
+   & Married/Cohabiting & 0.38 & 0.47 & 0.38 & 0.38 & 0.51 & 0.44 & 0.47 & 0.43 \\ 
+   & Less than Primary & 0.59 & 0.28 & 0.74 & 0.82 & 0.84 & 0.86 & 0.47 & 0.26 \\ 
+   & Primary & 0.29 & 0.5 & 0.17 & 0.12 & 0.11 & 0.09 & 0.37 & 0.27 \\ 
+   & Secondary & 0.07 & 0.16 & 0.06 & 0.05 & 0.04 & 0.04 & 0.1 & 0.36 \\ 
+   & University & 0.02 & 0.05 & 0.03 & 0.01 & 0.01 & - & 0.06 & 0.11 \\ 
+   & Unknown & 0.04 & - & - & - & - & - & - & - \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Summary Statistics by Country and Sex} 
+\label{table2}
+\begingroup\small
+\begin{tabular}{l|l|lllllllll}
+  \hline
+Gender & Demographics & cuba & dominican republic & puerto rico & el salvador & guatemala & honduras & mexico & colombia & united states \\ 
+  \hline
+Women & Age & 75.35 & 72.96 & 73.97 & 72.63 & 72.36 & 72.61 & 73.07 & 73.2 & 73.75 \\ 
+   & Married/Cohabiting & 0.34 & 0.31 & 0.33 & 0.34 & 0.38 & 0.35 & 0.45 & 0.38 & 0.48 \\ 
+   & English Speakers & 0.71 & 0.6 & 0.89 & 0.68 & 0.79 & 0.75 & 0.65 & 0.83 & 1 \\ 
+   & Citizen & 0.84 & 0.7 & - & 0.66 & 0.69 & 0.67 & 0.57 & 0.77 & - \\ 
+   & Age at Immigration & 35.63 & 37.38 & - & 36 & 33.13 & 36.48 & 31.8 & 35.38 & - \\ 
+   & Years in US & 39.76 & 35.53 & - & 36.63 & 39.26 & 36.17 & 41.27 & 37.83 & - \\ 
+   & Less than Primary Completed & 0.11 & 0.31 & 0.15 & 0.38 & 0.3 & 0.23 & 0.4 & 0.13 & 0.01 \\ 
+   & Primary Completed & 0.21 & 0.29 & 0.25 & 0.27 & 0.23 & 0.21 & 0.3 & 0.12 & 0.08 \\ 
+   & Secondary Completed & 0.5 & 0.33 & 0.48 & 0.31 & 0.38 & 0.45 & 0.27 & 0.59 & 0.66 \\ 
+   & University Completed & 0.19 & 0.07 & 0.12 & 0.05 & 0.08 & 0.11 & 0.04 & 0.16 & 0.26 \\ 
+  Men & Age & 74.6 & 72.24 & 73.36 & 71.23 & 70.78 & 71.5 & 72.32 & 72.98 & 73.13 \\ 
+   & Married/Cohabiting & 0.63 & 0.66 & 0.61 & 0.67 & 0.65 & 0.69 & 0.73 & 0.72 & 0.7 \\ 
+   & English Speakers & 0.78 & 0.7 & 0.94 & 0.78 & 0.87 & 0.83 & 0.74 & 0.88 & 1 \\ 
+   & Citizen & 0.79 & 0.67 & - & 0.65 & 0.66 & 0.6 & 0.55 & 0.75 & - \\ 
+   & Age at Immigration & 34.42 & 36.35 & - & 34.07 & 32.05 & 34.42 & 29.1 & 34.47 & - \\ 
+   & Years in US & 40.19 & 35.89 & - & 37.2 & 38.75 & 37.16 & 43.23 & 38.55 & - \\ 
+   & Less than Primary Completed & 0.11 & 0.28 & 0.15 & 0.29 & 0.25 & 0.2 & 0.39 & 0.12 & 0.01 \\ 
+   & Primary Completed & 0.2 & 0.28 & 0.26 & 0.28 & 0.25 & 0.24 & 0.29 & 0.09 & 0.07 \\ 
+   & Secondary Completed & 0.48 & 0.35 & 0.48 & 0.33 & 0.37 & 0.42 & 0.26 & 0.55 & 0.57 \\ 
+   & University Completed & 0.22 & 0.09 & 0.11 & 0.1 & 0.12 & 0.14 & 0.06 & 0.24 & 0.34 \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Summary Statistics by Country and Sex} 
+\label{table3}
+\begingroup\small
+\begin{tabular}{l|l|p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}}
+  \hline
+Gender & Demographics & Hispanic Black Foreign & Hispanic White Foreign & Hispanic Other Foreign & Non-Hispanic Black Native & Non-Hispanic White Native & Non-Hispanic Other Native & All Native Hispanic \\ 
+  \hline
+Women & Age & 73.74 & 73.75 & 73.14 & 73.19 & 73.87 & 72.96 & 73.17 \\ 
+   & Married/Cohabiting & 0.28 & 0.4 & 0.38 & 0.27 & 0.51 & 0.42 & 0.41 \\ 
+   & English Speakers & 0.75 & 0.72 & 0.7 & - & - & 0.99 & 0.99 \\ 
+   & Citizen & 0.51 & 0.55 & 0.53 & - & - & - & - \\ 
+   & Age at Immigration & 37.29 & 33.49 & 33.79 & - & - & - & - \\ 
+   & Years in US & 36.58 & 40.17 & 39.23 & - & - & - & - \\ 
+   & Less than Primary Completed & 0.24 & 0.26 & 0.33 & 0.03 & 0.01 & 0.03 & 0.08 \\ 
+   & Primary Completed & 0.25 & 0.26 & 0.27 & 0.15 & 0.06 & 0.09 & 0.17 \\ 
+   & Secondary Completed & 0.41 & 0.38 & 0.34 & 0.64 & 0.66 & 0.6 & 0.62 \\ 
+   & University Completed & 0.1 & 0.1 & 0.07 & 0.18 & 0.27 & 0.27 & 0.13 \\ 
+  Men & Age & 72.85 & 73.01 & 72.36 & 72.37 & 73.25 & 72.59 & 72.5 \\ 
+   & Married/Cohabiting & 0.55 & 0.69 & 0.68 & 0.52 & 0.72 & 0.63 & 0.61 \\ 
+   & English Speakers & 0.8 & 0.79 & 0.78 & - & - & - & 0.99 \\ 
+   & Citizen & 0.49 & 0.53 & 0.51 & - & - & - & - \\ 
+   & Age at Immigration & 34.78 & 31.13 & 31.42 & - & - & - & - \\ 
+   & Years in US & 37.95 & 41.8 & 40.79 & - & - & - & - \\ 
+   & Less than Primary Completed & 0.22 & 0.26 & 0.32 & 0.04 & 0.01 & 0.03 & 0.07 \\ 
+   & Primary Completed & 0.26 & 0.25 & 0.27 & 0.16 & 0.06 & 0.08 & 0.15 \\ 
+   & Secondary Completed & 0.4 & 0.37 & 0.33 & 0.63 & 0.57 & 0.57 & 0.6 \\ 
+   & University Completed & 0.11 & 0.12 & 0.08 & 0.17 & 0.36 & 0.32 & 0.18 \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+
+
+\end{landscape}
+
 \subsection{Appendix}\label{appendix}
-
-\begin{landscape}
-\thispagestyle{landscape} % Apply custom pagestyle to this page
-\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table1.tex}
-: Alightment table {tbl-colwidths="[20]}
-\end{landscape}
-
-\newpage
-\begin{landscape}
-\thispagestyle{landscape}
-\input{/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex}
-\end{landscape}
-\newpage
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}

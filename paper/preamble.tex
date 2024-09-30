@@ -1,13 +1,170 @@
-% preamble.tex
-\usepackage{lmodern} % Use Latin Modern, an enhanced version of Computer Modern
-\usepackage{graphicx} 
-\usepackage{adjustbox}
-\usepackage{fancyhdr}
-\usepackage{pdflscape} % landscape
+%% tempate from https://arxiv.org/abs/2007.12702
 
-\fancypagestyle{landscape}{%
-  \fancyhf{} % Clear all header and footer fields
-  \fancyfoot[C]{\rotatebox{90}{\thepage}} % Rotate and center page number
-  \renewcommand{\headrulewidth}{0pt} % Remove header line
-  \renewcommand{\footrulewidth}{0pt} % Remove footer line
-}
+\usepackage[toc,page,header]{appendix}
+\renewcommand\appendixname{Supplemental Information}
+\renewcommand\appendixtocname{Supplemental Information}
+
+\usepackage{minitoc}
+\usepackage{framed}
+
+%% set colors 
+\usepackage{xcolor}
+\newcommand\red[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\black}[1]{\textcolor{black}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\green}[1]{\textcolor{olive}{#1}}
+\newcommand{\white}[1]{\textcolor{white}{#1}}
+\newcommand{\bblue}[1]{\textbf{\textcolor{blue}{#1}}}
+\newcommand{\bgreen}[1]{\textbf{\color{olive}{#1}}}
+
+\usepackage{comment}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+\usepackage{array}
+\setcounter{tocdepth}{2}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{placeins}
+\usepackage{cancel}
+\usepackage{pdfpages}
+\definecolor{newcolor}{rgb}{0.45,0.51,0.87}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = olive,
+            anchorcolor = black]{hyperref}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{amsmath,amsfonts,bm,mathtools,physics,graphicx,longtable,booktabs}
+\usepackage{lscape}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\simind}{\stackrel{\text{ind.}}{\sim}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\bA}{\bm{A}}
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bD}{\bm{D}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bQ}{\bm{Q}}
+\newcommand{\bR}{\bm{R}}
+\newcommand{\bU}{\bm{U}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bX}{\bm{X}} 
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bS}{\bm{S}}
+\newcommand{\bs}{\bm{s}}
+\newcommand{\bY}{\bm{Y}}
+\newcommand{\bz}{\bm{z}}
+\newcommand{\bZ}{\bm{Z}}
+\newcommand{\inty}{\infty}
+\newcommand{\inft}{\infty}
+\newcommand{\bbeta}{\bm\beta}
+\newcommand{\bgamma}{\bm\gamma}
+\newcommand{\bdelta}{\bm\delta}
+\newcommand{\bepsilon}{\bm\epsilon}
+\newcommand{\bLambda}{\bm\Lambda}
+\newcommand{\btheta}{\bm\theta}
+\newcommand{\bnu}{\bm\nu}
+\newcommand{\bmu}{\bm\mu}
+\newcommand{\bxi}{\bm\xi}
+\newcommand{\bzeta}{\bm\zeta}
+\newcommand{\bOmega}{\bm\Omega}
+\newcommand{\oracle}{\mathrm{oracle}}
+\newcommand{\ridge}{\mathrm{penalty}}
+\newcommand{\sdf}{\mathrm{subset}}
+\newcommand{\wndf}{\mathrm{wn}}
+\newcommand{\pndf}{\mathrm{pm}}
+\newcommand{\full}{\mathrm{full}}
+\newcommand{\deconf}{\mathrm{deconf}}
+\newcommand{\naive}{\mathrm{na\ddot{\i}ve}}
+\newcommand{\nonlinear}{\mathrm{nonlinear}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\plim}{\mathit{p}-lim}
+\renewcommand{\d}{\, \mathrm{d}}
+\newcommand{\I}{I}
+\newcommand{\Prob}{P}
+\newtheorem{com}{Comment}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\newtheorem{ass}{Assumption}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\m}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\snorm}[1]{||#1||}
+\newcommand{\indep}{\mbox{$\perp\!\!\!\perp$}}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+\usepackage{lineno}
+\usepackage{afterpage}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+
+%% set colors 
+
+\usepackage{xcolor}
+\definecolor{Orange}{rgb}{1,0.5,0}
+\definecolor{Red}{rgb}{1,0,0}
+\definecolor{Green}{rgb}{0,0.65,0.5}
+\definecolor{Purple}{rgb}{0.75,0,1}
+\definecolor{babypink}{rgb}{0.96, 0.76, 0.76}
+\definecolor{azure}{rgb}{0,0.49,1}
+\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
+\definecolor{Pink}{RGB}{255, 102, 204}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\newcommand{\todo}[1]{\textsf{\textbf{\textcolor{Orange}{[[TODO: #1]]}}}}
+\newcommand{\verify}[1]{\textsf{\textbf{\textcolor{red}{[[Verify: #1]]}}}}
+\newcommand{\chris}[1]{\textsf{\textbf{\textcolor{azure}{[[Chris: #1]]}}}}
+\newcommand{\casey}[1]{\textsf{\textbf{\textcolor{Green}{[[Casey: #1]]}}}}
+
+%% "clever" reference package 
+\usepackage[nameinlink, capitalize, noabbrev]{cleveref}
+\Crefname{appsec}{appendix}{appendices}
+
+%% custom command for adding in figure / table place holders
+\newcommand\PlaceInsert[1]{%
+  \begin{center}
+  \framebox{\cref{#1} about here.}
+  \end{center}
+\bigskip}
+
+
+  \def\fillandplacepagenumber{%
+ \par\pagestyle{empty}%
+ \vbox to 0pt{\vss}\vfill
+ \vbox to 0pt{\baselineskip0pt
+   \hbox to\linewidth{\hss}%
+   \baselineskip\footskip
+   \hbox to\linewidth{%
+     \hfil\thepage\hfil}\vss}}
+
+% %% bibliography 
+% \usepackage{babel}% Recommended
+% \usepackage{csquotes}% Recommended
+% \usepackage[style=apa]{biblatex}
+% \addbibresource{bunmd_paper.bib} % Syntax for version >= 1.2
+% \bibliography{<mybibfile>}% ONLY selects .bib file; syntax for version <= 1.1b
+
+\usepackage[margin = 1in]{geometry}
+\usepackage{pdflscape} % to make rotate landscape page
+\usepackage{tabularx}
+\usepackage{enumitem}
+
