@@ -80,17 +80,29 @@ save data/US_65_89.dta, replace
 
 ***below I will create the age standardization variable***
 
-collapse (sum) perwt, by(age2) //summing by person weight instead of actual n count
-egen total_perwt = total(perwt)
-gen age_weight = perwt / total_perwt
-drop total_perwt
-drop perwt
+decode sex, gen(sex_string)
+replace sex_string = lower(sex_string)
+levelsof sex_string, local(sexes)
 
-* Summarize age_weight to check if it sums to 1
-summarize age_weight
+tempfile original_data
+save `original_data'
 
-export delimited using "data/us_age_weights.csv", replace
-save data/us_age_weights.dta, replace
+foreach s of local sexes {
+    use `original_data', clear
+    
+    keep if sex_string == "`s'"
+    
+    collapse (sum) perwt, by(age2)
+    egen total_perwt = total(perwt)
+    gen age_weight_`s' = perwt / total_perwt
+    drop total_perwt
+    drop perwt
+    decode age2, gen(age2_string)
+    gen match_var_us = "`s'" + age2_string
+    
+    export delimited using "data/weights/us_age_weights_`s'.csv", replace
+    save "data/weights/us_age_weights_`s'.dta", replace
+}
 
 clear
 
@@ -111,13 +123,91 @@ gen education_unknown = (edattain_string == "Unknown")
 
 gen married_cohab = (marst == 2) if marst != .
 
-*keep if country != 840
+decode country, gen(country_string)
 
-merge m:1 age2 using data/us_age_weights.dta
+replace country_string = "DR" if country_string == "Dominican Republic"
+replace country_string = "US" if country_string == "United States"
+replace country_string = "ES" if country_string == "El Salvador"
+replace country_string = "PR" if country_string == "Puerto Rico"
 
-gen perwt_age_standardized = perwt * age_weight
+decode sex, gen(sex_string)
+replace sex_string = lower(sex_string)
+
+levelsof country_string, local(countries)
+levelsof sex_string, local(sexes)
+
+preserve
+
+tempfile original_data_in
+save `original_data_in'
+
+* Calculating weights for each country and sex in international sample
+foreach c of local countries {
+    foreach s of local sexes {
+        use `original_data_in', clear
+        
+        keep if country_string == "`c'" & sex_string == "`s'"
+        
+        collapse (sum) perwt, by(age2)
+        egen total_perwt = total(perwt)
+        gen age_weight_`c'_`s' = perwt / total_perwt
+        drop total_perwt
+        drop perwt
+        
+        decode age2, gen(age2_string)
+        gen match_var_in = "`c'" + "`s'" + age2_string
+        
+        sum age_weight_`c'_`s'
+        
+        export delimited using "data/weights/in_age_weights_`c'_`s'.csv", replace
+        save "data/weights/in_age_weights_`c'_`s'.dta", replace
+    }
+}
+
+restore
+
+decode age2, gen(age2_string)
+gen match_var_in = country_string + sex_string + age2_string
+gen match_var_us = sex_string + age2_string
+
+*next, I want to merge in the US weights by sex
+levelsof sex_string, local(sexes)
+
+foreach s of local sexes {
+	merge m:1 match_var_us using data/weights/us_age_weights_`s'.dta
+	drop _merge
+}
+
+gen age_weight_us = age_weight_female 
+replace age_weight_us = age_weight_male if age_weight_us == .
+
+drop age_weight_female age_weight_male
+*save data/international__65_89.dta, replace
+
+levelsof country_string, local(countries)
+levelsof sex_string, local(sexes)
+
+foreach c of local countries {
+    foreach s of local sexes {
+	
+	merge m:1 match_var_in using "data/weights/in_age_weights_`c'_`s'.dta"
+	drop _merge
+    }
+}
+
+levelsof country_string, local(countries)
+gen age_weight_in = .
+
+foreach c of local countries {
+    replace age_weight_in = age_weight_`c'_female if sex_string == "female" & age_weight_in == .
+    replace age_weight_in = age_weight_`c'_male if sex_string == "male" & age_weight_in == .
+    drop age_weight_`c'_male age_weight_`c'_female
+}
+
+gen age_weight_ratio = (age_weight_in/age_weight_us)
+
+gen perwt_age_standardized = perwt * age_weight_ratio
 
 save data/international__65_89.dta, replace
 
 clear all
-
