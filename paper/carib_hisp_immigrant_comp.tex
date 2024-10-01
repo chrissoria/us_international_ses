@@ -124,176 +124,7 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-%% tempate from https://arxiv.org/abs/2007.12702
-
-\usepackage[toc,page,header]{appendix}
-\renewcommand\appendixname{Supplemental Information}
-\renewcommand\appendixtocname{Supplemental Information}
-
-\usepackage{minitoc}
-\usepackage{framed}
-
-%% set colors 
-\usepackage{xcolor}
-\newcommand\red[1]{{\color{red}#1}}
-\newcommand{\blue}[1]{\textcolor{blue}{#1}}
-\newcommand{\black}[1]{\textcolor{black}{#1}}
-\newcommand{\purple}[1]{\textcolor{purple}{#1}}
-\newcommand{\green}[1]{\textcolor{olive}{#1}}
-\newcommand{\white}[1]{\textcolor{white}{#1}}
-\newcommand{\bblue}[1]{\textbf{\textcolor{blue}{#1}}}
-\newcommand{\bgreen}[1]{\textbf{\color{olive}{#1}}}
-
-\usepackage{comment}
-\usepackage{amsthm}
-\usepackage{enumitem}
-\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
-\usepackage{caption}
-\usepackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{tikzmark}
-\usepackage{array}
-\setcounter{tocdepth}{2}
-\usepackage{multirow}
-\usepackage{dcolumn}
-\usepackage{placeins}
-\usepackage{cancel}
-\usepackage{pdfpages}
-\definecolor{newcolor}{rgb}{0.45,0.51,0.87}
-\usepackage[colorlinks = true,
-            linkcolor = blue,
-            urlcolor  = blue,
-            citecolor = olive,
-            anchorcolor = black]{hyperref}
-\usepackage{subcaption}
-\usepackage{setspace}
-\usepackage{amsmath,amsfonts,bm,mathtools,physics,graphicx,longtable,booktabs}
-\usepackage{lscape}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-\newcommand{\simind}{\stackrel{\text{ind.}}{\sim}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\cB}{\mathcal{B}}
-\newcommand{\cN}{\mathcal{N}}
-\newcommand{\bA}{\bm{A}}
-\newcommand{\ba}{\bm{a}}
-\newcommand{\bD}{\bm{D}}
-\newcommand{\bI}{\bm{I}}
-\newcommand{\bM}{\bm{M}}
-\newcommand{\bQ}{\bm{Q}}
-\newcommand{\bR}{\bm{R}}
-\newcommand{\bU}{\bm{U}}
-\newcommand{\bV}{\bm{V}}
-\newcommand{\bX}{\bm{X}} 
-\newcommand{\bW}{\bm{W}}
-\newcommand{\bS}{\bm{S}}
-\newcommand{\bs}{\bm{s}}
-\newcommand{\bY}{\bm{Y}}
-\newcommand{\bz}{\bm{z}}
-\newcommand{\bZ}{\bm{Z}}
-\newcommand{\inty}{\infty}
-\newcommand{\inft}{\infty}
-\newcommand{\bbeta}{\bm\beta}
-\newcommand{\bgamma}{\bm\gamma}
-\newcommand{\bdelta}{\bm\delta}
-\newcommand{\bepsilon}{\bm\epsilon}
-\newcommand{\bLambda}{\bm\Lambda}
-\newcommand{\btheta}{\bm\theta}
-\newcommand{\bnu}{\bm\nu}
-\newcommand{\bmu}{\bm\mu}
-\newcommand{\bxi}{\bm\xi}
-\newcommand{\bzeta}{\bm\zeta}
-\newcommand{\bOmega}{\bm\Omega}
-\newcommand{\oracle}{\mathrm{oracle}}
-\newcommand{\ridge}{\mathrm{penalty}}
-\newcommand{\sdf}{\mathrm{subset}}
-\newcommand{\wndf}{\mathrm{wn}}
-\newcommand{\pndf}{\mathrm{pm}}
-\newcommand{\full}{\mathrm{full}}
-\newcommand{\deconf}{\mathrm{deconf}}
-\newcommand{\naive}{\mathrm{na\ddot{\i}ve}}
-\newcommand{\nonlinear}{\mathrm{nonlinear}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\Var}{\mathrm{Var}}
-\newcommand{\Cov}{\mathrm{Cov}}
-\DeclareMathOperator*{\plim}{\mathit{p}-lim}
-\renewcommand{\d}{\, \mathrm{d}}
-\newcommand{\I}{I}
-\newcommand{\Prob}{P}
-\newtheorem{com}{Comment}
-\newtheorem{lem}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{thm}{Theorem}
-\newtheorem{defn}{Definition}
-\newtheorem{cor}{Corollary}
-\newtheorem{obs}{Observation}
-\newtheorem{ass}{Assumption}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-\newcommand{\m}[1]{\begin{bmatrix} #1 \end{bmatrix}}
-\newcommand{\snorm}[1]{||#1||}
-\newcommand{\indep}{\mbox{$\perp\!\!\!\perp$}}
-\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
-\usepackage{lineno}
-\usepackage{afterpage}
-\usepackage [autostyle, english = american]{csquotes}
-\MakeOuterQuote{"}
-
-
-%% set colors 
-
-\usepackage{xcolor}
-\definecolor{Orange}{rgb}{1,0.5,0}
-\definecolor{Red}{rgb}{1,0,0}
-\definecolor{Green}{rgb}{0,0.65,0.5}
-\definecolor{Purple}{rgb}{0.75,0,1}
-\definecolor{babypink}{rgb}{0.96, 0.76, 0.76}
-\definecolor{azure}{rgb}{0,0.49,1}
-\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
-\definecolor{Pink}{RGB}{255, 102, 204}
-\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
-\newcommand{\todo}[1]{\textsf{\textbf{\textcolor{Orange}{[[TODO: #1]]}}}}
-\newcommand{\verify}[1]{\textsf{\textbf{\textcolor{red}{[[Verify: #1]]}}}}
-\newcommand{\chris}[1]{\textsf{\textbf{\textcolor{azure}{[[Chris: #1]]}}}}
-\newcommand{\casey}[1]{\textsf{\textbf{\textcolor{Green}{[[Casey: #1]]}}}}
-
-%% "clever" reference package 
-\usepackage[nameinlink, capitalize, noabbrev]{cleveref}
-\Crefname{appsec}{appendix}{appendices}
-
-%% custom command for adding in figure / table place holders
-\newcommand\PlaceInsert[1]{%
-  \begin{center}
-  \framebox{\cref{#1} about here.}
-  \end{center}
-\bigskip}
-
-
-  \def\fillandplacepagenumber{%
- \par\pagestyle{empty}%
- \vbox to 0pt{\vss}\vfill
- \vbox to 0pt{\baselineskip0pt
-   \hbox to\linewidth{\hss}%
-   \baselineskip\footskip
-   \hbox to\linewidth{%
-     \hfil\thepage\hfil}\vss}}
-
-% %% bibliography 
-% \usepackage{babel}% Recommended
-% \usepackage{csquotes}% Recommended
-% \usepackage[style=apa]{biblatex}
-% \addbibresource{bunmd_paper.bib} % Syntax for version >= 1.2
-% \bibliography{<mybibfile>}% ONLY selects .bib file; syntax for version <= 1.1b
-
-\usepackage[margin = 1in]{geometry}
-\usepackage{pdflscape} % to make rotate landscape page
-\usepackage{tabularx}
-\usepackage{enumitem}
-
+\usepackage{pdflscape}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -357,7 +188,7 @@
 \title{Sociodemographic Comparison of Caribbean Hispanic Older Adult
 Immigrants in the U.S. and Origin Countries}
 \author{William H. Dow \and Chris Soria \and Henry T. Dow}
-\date{2024-09-30}
+\date{2024-10-01}
 
 \begin{document}
 \maketitle
@@ -424,15 +255,15 @@ inform future comparative research on Hispanic healthy aging.
 
 \subsection{Data and Methods}\label{data-and-methods}
 
-Census data for this study were obtained from IPUMS International, which
-provided harmonized datasets for Colombia (2005), Cuba (2012), the
-Dominican Republic (2010), El Salvador (2007), Guatemala (2002),
-Honduras (2001), Mexico (2020), Puerto Rico (2010), and the United
-States (2020). The study focused on individuals aged 65 to 89, as some
-datasets, such as Puerto Rico's, capped ages at 89. To ensure
-comparability, we standardized the age distribution of the international
-population based on U.S. age groups. We also applied weights provided by
-IPUMS to make the samples nationally representative.
+Census data for this study were obtained from IPUMS International
+Ruggles et al. (n.d.), which provided harmonized datasets for Colombia
+(2005), Cuba (2012), the Dominican Republic (2010), El Salvador (2007),
+Guatemala (2002), Honduras (2001), Mexico (2020), Puerto Rico (2010),
+and the United States (2020). The study focused on individuals aged 65
+to 89, as some datasets, such as Puerto Rico's, capped ages at 89. To
+ensure comparability, we standardized the age distribution of the
+international population based on U.S. age groups. We also applied
+weights provided by IPUMS to make the samples nationally representative.
 
 \subsection{Preliminary Results}\label{preliminary-results}
 
@@ -444,18 +275,18 @@ adults aged 65 to 89, comparing across current country of residence in
 the Hispanic Caribbean and adjacent countries. Rates of current
 marriage/cohabitation are substantially higher and cohabitation rates
 also vary significantly. In Dominican countries such as Cuba, the
-Dominican Republic, and Puerto Rico, women's rates are relatively low
+Dominican Republic, and Puerto Rico, men's rates are relatively low
 (68\%-69\%) compared to Mexico (75\%) and Guatemala (81\%), yet still
-higher than the overall U.S. rate of 48\%. Interestingly, men are much
-less likely to be married or cohabitating than women in these countries;
-for example, Colombia shows a 30\% gap, with only 38\% of men married or
-cohabitating. This contrasts with the U.S., where men (70\%) are more
-likely to be married or cohabitating than women (48\%). Regarding
-education, Honduras and Guatemala have the highest percentages of women
-with less than primary education (84\% and 81\%, respectively), followed
-by El Salvador (76\%). Generally, men are slightly less likely to
-achieve higher education levels, and notably, in Honduras, no men aged
-65 and above hold a university degree.
+higher than the overall U.S. rate of 48\%. Interestingly, women are much
+less likely to be married or cohabitating than men in all countries; for
+example, Colombia shows a 30\% gap, with only 38\% of women married or
+cohabitating. In this regard, they are similar to the U.S., where men
+(70\%) are more likely to be married or cohabitating than women (48\%).
+Regarding education, Honduras and Guatemala have the highest percentages
+of men with less than primary education (84\% and 81\%, respectively),
+followed by El Salvador (76\%). Generally, women are slightly less
+likely to achieve higher education levels, and notably, in Honduras, no
+women aged 65 and above hold a university degree.
 
 \subsubsection{Hispanic older adults as migrants in the
 US}\label{hispanic-older-adults-as-migrants-in-the-us}
@@ -474,22 +305,22 @@ likely to be married or cohabitating across all groups. The largest gap
 is seen among Colombian migrants, where 88\% of men are married or
 cohabitating compared to only 38\% of women, a 50\% difference.
 
-Many of these migrants have low English fluency rates, with women
-generally less likely to speak English than men. The lowest fluency
-rates are among migrants from the Dominican Republic, where only 60\% of
-female and 70\% of male migrants speak English, and Mexico, with 65\% of
-women and 75\% of men speaking English. In contrast, migrants from Cuba
-(71\% of women and 79\% of men), Colombia (83\% of women and 88\% of
-men), and Guatemala (79\% of women and 87\% of men) have higher English
-fluency rates. Women are slightly more likely to become naturalized U.S.
-citizens than men. Typically, men emigrate to the U.S. at a younger age,
-about two years earlier on average. For example, women from Honduras
-arrive at an average age of 36.48, while men arrive at 34.42, often
-resulting in longer U.S. residency for men---Honduran men report an
-average of 37.16 years compared to women's 36.17 years. However,
-Guatemala is an exception; despite migrating at a younger age (32.05),
-Guatemalan men have spent fewer years in the U.S. (38.75) compared to
-women (39.26).
+Many of these migrants have surprisingly low English fluency rates, with
+women generally less likely to speak English than men. The lowest
+fluency rates are among migrants from the Dominican Republic, where only
+60\% of female and 70\% of male migrants speak English, and Mexico, with
+65\% of women and 75\% of men speaking English. In contrast, migrants
+from Cuba (71\% of women and 79\% of men), Colombia (83\% of women and
+88\% of men), and Guatemala (79\% of women and 87\% of men) have higher
+English fluency rates. Women are slightly more likely to become
+naturalized U.S. citizens than men. Typically, men emigrate to the U.S.
+at a younger age, about two years earlier on average. For example, women
+from Honduras arrive at an average age of 36.48, while men arrive at
+34.42, often resulting in longer U.S. residency for men---Honduran men
+report an average of 37.16 years compared to women's 36.17 years.
+However, Guatemala is an exception; despite migrating at a younger age
+(32.05), Guatemalan men have spent fewer years in the U.S. (38.75)
+compared to women (39.26).
 
 Men are more likely to have a college degree across all groups:
 Guatemalan men (12\%) compared to women (8\%), Honduran men (14\%)
@@ -498,10 +329,11 @@ largest gender gap is among Colombian migrants, with 24\% of men holding
 a college degree compared to 16\% of women. The least educated groups
 are Mexican migrants (6\% of men and 4\% of women with college degrees)
 and those from the Dominican Republic (9\% for men and 7\% for women).
-These patterns contrast with their native countries, where women are
-more likely to have a college degree. Overall, migrant groups tend to
-have lower educational attainment than the broader U.S. population, with
-many having only primary or less education.
+These patterns are similar as their counterparts from their native
+countries, where men are more likely to have a college degree. Overall,
+migrant groups tend to have lower educational attainment than the
+broader U.S. population, with many having only primary or less
+education.
 
 \subsubsection{Race and nativity in US
 migrants}\label{race-and-nativity-in-us-migrants}
@@ -519,12 +351,12 @@ spend fewer years in the U.S., while Whites and those of other Hispanic
 races have similar immigration patterns. White Hispanic migrants have
 slightly longer U.S. residency. Interestingly, the college degree gap
 between Black and White migrants is nonexistent; both groups are equally
-likely to earn a degree. This contrasts with native populations, where
-only 17\% of Black men hold a college degree compared to 36\% of White
-men. Hispanic migrants identifying as a race other than White or Black
-are the least likely to have a college degree and most likely to have
-less than primary education, with 33\% of women and 32\% of men in this
-category having less than a primary education.
+likely to earn a degree. This contrasts with US native populations,
+where only 17\% of Black men hold a college degree compared to 36\% of
+White men. Hispanic migrants identifying as a race other than White or
+Black are the least likely to have a college degree and most likely to
+have less than primary education, with 33\% of women and 32\% of men in
+this category having less than a primary education.
 
 \subsection{Discussion}\label{discussion}
 
@@ -536,13 +368,11 @@ category having less than a primary education.
   speaking rates, etc.
 \end{itemize}
 
-\newpage
-
 \begin{landscape}
+
 \begin{table}[ht]
 \centering
-\caption{Summary Statistics by Country and Sex For Hispanics in Their Native Countries} 
-
+\caption{Demographic Information by Gender and Country}
 \begingroup\small
 \begin{tabular}{l|l|lllllllll}
   \hline
@@ -555,24 +385,23 @@ Women & Age & 72.48 & 73.67 & 73.44 & 73.5 & 72.63 & 72.38 & 72.73 & 74.28 & 73.
    & Secondary & 0.06 & 0.15 & 0.06 & 0.04 & 0.04 & 0.04 & 0.1 & 0.33 & 0.63 \\ 
    & University & 0.02 & 0.05 & 0.03 & 0.01 & 0.01 & - & 0.05 & 0.1 & 0.25 \\ 
    & Unknown & 0.03 & - & - & - & - & - & - & - & - \\ 
-  Men & Age & 72.43 & 73.58 & 73.29 & 73.93 & 73.17 & 73.01 & 72.84 & 73.51 & 73.13 \\ 
+Men & Age & 72.43 & 73.58 & 73.29 & 73.93 & 73.17 & 73.01 & 72.84 & 73.51 & 73.13 \\ 
    & Married/Cohabiting & 0.67 & 0.66 & 0.67 & 0.7 & 0.79 & 0.72 & 0.73 & 0.67 & 0.7 \\ 
    & Less than Primary & 0.6 & 0.24 & 0.72 & 0.78 & 0.82 & 0.85 & 0.45 & 0.24 & 0.03 \\ 
    & Primary & 0.26 & 0.5 & 0.18 & 0.15 & 0.13 & 0.1 & 0.35 & 0.28 & 0.08 \\ 
    & Secondary & 0.06 & 0.2 & 0.06 & 0.05 & 0.03 & 0.04 & 0.09 & 0.35 & 0.55 \\ 
    & University & 0.04 & 0.06 & 0.04 & 0.02 & 0.02 & 0.01 & 0.12 & 0.13 & 0.33 \\ 
    & Unknown & 0.04 & - & - & - & - & - & - & - & - \\ 
-   \hline
+\hline
 \end{tabular}
 \endgroup
 \end{table}
 
-
+\newpage
 
 \begin{table}[ht]
 \centering
 \caption{Summary Statistics by Country and Sex} 
-\label{table2}
 \begingroup\small
 \begin{tabular}{l|l|lllllllll}
   \hline
@@ -603,11 +432,9 @@ Women & Age & 75.35 & 72.96 & 73.97 & 72.63 & 72.36 & 72.61 & 73.07 & 73.2 & 73.
 \endgroup
 \end{table}
 
-
 \begin{table}[ht]
 \centering
 \caption{Summary Statistics by Country and Sex} 
-\label{table3}
 \begingroup\small
 \begin{tabular}{l|l|p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}}
   \hline
@@ -638,10 +465,7 @@ Women & Age & 73.74 & 73.75 & 73.14 & 73.19 & 73.87 & 72.96 & 73.17 \\
 \endgroup
 \end{table}
 
-
 \end{landscape}
-
-\newpage
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
@@ -666,6 +490,11 @@ Noe-Bustamante, Mohamad Moslimani and Luis, Jeffrey S. Passel. 2023.
 Passel, Mohamad Moslimani and Jeffrey S. 2024. {``What the Data Says
 about Immigrants in the {U}.{S}.''} \emph{Pew Research Center}.
 \url{https://www.pewresearch.org/short-reads/2024/09/27/key-findings-about-us-immigrants/}.
+
+\bibitem[\citeproctext]{ref-ruggles_ipums_nodate}
+Ruggles, Streven, Lara Cleveland, Sula Sarkar, and Matthew Sobek. n.d.
+{``{IPUMS} {International}.''} Accessed October 1, 2024.
+\url{https://international.ipums.org/international/}.
 
 \end{CSLReferences}
 

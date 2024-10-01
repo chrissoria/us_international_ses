@@ -6,7 +6,8 @@ format:
     keep-tex: true
     documentclass: article
     latex-engine: xelatex
-    include-in-header: preamble.tex
+header-includes:
+   - \usepackage{pdflscape}
         
 date: last-modified
 tbl-cap-location: top
@@ -21,7 +22,8 @@ affiliations:
   - name: University of California, Berkeley
     index: 1
 acknowledgements: | 
-  Any acknowledgements?
+  The authors wish to acknowledge the statistical offices that provided the underlying data making this research possible: National Administrative Department of Statistics, Colombia; Office of National Statistics, Cuba; National Statistics Office, Dominican Republic; Department of Statistics and Censuses, El Salvador; National Institute of Statistics, Guatemala; National Institute of Statistics, Honduras; National Institute of Statistics, Geography, and Informatics, Mexico; U.S. Bureau of the Census, Puerto Rico; and Bureau of the Census, United States.
+
       
 abstract: |
   Caribbean and adjacent Latin American countries are key sources of Hispanic immigrants to the U.S. There has been rapid growth in the older adult Hispanic populations both among immigrants in the U.S. and in their home countries of emigration. This paper supports hypothesis generation for international comparative Hispanic aging studies by comparing older adult sociodemographic characteristics of U.S. immigrants versus those in sending countries. The analysis also provides context for the global family of health and retirement studies in the region including the ongoing Caribbean American Dementia and Aging Study (CADAS) which is collecting harmonized data on healthy aging in Puerto Rico, Dominican Republic, and Cuba. We analyze census microdata from these countries along with other major Hispanic Caribbean-adjacent sending countries including Mexico, Colombia, El Salvador, Guatemala, and Honduras. We compare older adults in these sending countries to country-specific immigrant samples in the U.S. American Community Survey, focusing on socioeconomic differences such as education, as well as marital status and co-residence patterns related to caregiver availability. We also examine differences by citizenship and immigration age to further explore immigrant selectivity patterns. The highly varied experiences of these cohorts will help inform future comparative research on Hispanic healthy aging.  
@@ -40,39 +42,35 @@ The paper is designed to support hypothesis generation for international compara
 
 ## Data and Methods
 
-Census data for this study were obtained from IPUMS International, which provided harmonized datasets for Colombia (2005), Cuba (2012), the Dominican Republic (2010), El Salvador (2007), Guatemala (2002), Honduras (2001), Mexico (2020), Puerto Rico (2010), and the United States (2020). The study focused on individuals aged 65 to 89, as some datasets, such as Puerto Rico's, capped ages at 89. To ensure comparability, we standardized the age distribution of the international population based on U.S. age groups. We also applied weights provided by IPUMS to make the samples nationally representative.
+Census data for this study were obtained from IPUMS International @ruggles_ipums_nodate, which provided harmonized datasets for Colombia (2005), Cuba (2012), the Dominican Republic (2010), El Salvador (2007), Guatemala (2002), Honduras (2001), Mexico (2020), Puerto Rico (2010), and the United States (2020). The study focused on individuals aged 65 to 89, as some datasets, such as Puerto Rico's, capped ages at 89. To ensure comparability, we standardized the age distribution of the international population based on U.S. age groups. We also applied weights provided by IPUMS to make the samples nationally representative.
 
 ## Preliminary Results
 
 ### Hispanic older adults in their native countries
 
-Table 1 shows sex-specific sociodemographic characteristics among older adults aged 65 to 89, comparing across current country of residence in the Hispanic Caribbean and adjacent countries. Rates of current marriage/cohabitation are substantially higher  and cohabitation rates also vary significantly. In Dominican countries such as Cuba, the Dominican Republic, and Puerto Rico, women's rates are relatively low (68%-69%) compared to Mexico (75%) and Guatemala (81%), yet still higher than the overall U.S. rate of 48%. Interestingly, men are much less likely to be married or cohabitating than women in these countries; for example, Colombia shows a 30% gap, with only 38% of men married or cohabitating. This contrasts with the U.S., where men (70%) are more likely to be married or cohabitating than women (48%). Regarding education, Honduras and Guatemala have the highest percentages of women with less than primary education (84% and 81%, respectively), followed by El Salvador (76%). Generally, men are slightly less likely to achieve higher education levels, and notably, in Honduras, no men aged 65 and above hold a university degree.
+Table 1 shows sex-specific sociodemographic characteristics among older adults aged 65 to 89, comparing across current country of residence in the Hispanic Caribbean and adjacent countries. Rates of current marriage/cohabitation are substantially higher  and cohabitation rates also vary significantly. In Dominican countries such as Cuba, the Dominican Republic, and Puerto Rico, men's rates are relatively low (68%-69%) compared to Mexico (75%) and Guatemala (81%), yet still higher than the overall U.S. rate of 48%. Interestingly, women are much less likely to be married or cohabitating than men in all countries; for example, Colombia shows a 30% gap, with only 38% of women married or cohabitating. In this regard, they are similar to the U.S., where men (70%) are more likely to be married or cohabitating than women (48%). Regarding education, Honduras and Guatemala have the highest percentages of men with less than primary education (84% and 81%, respectively), followed by El Salvador (76%). Generally, women are slightly less likely to achieve higher education levels, and notably, in Honduras, no women aged 65 and above hold a university degree.
 
 ### Hispanic older adults as migrants in the US
 
 Table 2 highlights the age and marital status of migrants from these countries living in the U.S. The youngest groups are men from El Salvador (71.23), Guatemala (70.78), and Honduras (70.78), who are about two years younger than their counterparts in their native countries (73.57, 72.99, and 72.92, respectively). The oldest group consists of Cuban women (73.35), who are slightly younger than U.S. women overall (73.75), while Cuban men (74.6) are older than the U.S. average for men (73.13). Interestingly, the pattern observed in their native countries—where women are more likely to be married or cohabitating—is reversed among U.S. migrants, with men being much more likely to be married or cohabitating across all groups. The largest gap is seen among Colombian migrants, where 88% of men are married or cohabitating compared to only 38% of women, a 50% difference.
 
-Many of these migrants have low English fluency rates, with women generally less likely to speak English than men. The lowest fluency rates are among migrants from the Dominican Republic, where only 60% of female and 70% of male migrants speak English, and Mexico, with 65% of women and 75% of men speaking English. In contrast, migrants from Cuba (71% of women and 79% of men), Colombia (83% of women and 88% of men), and Guatemala (79% of women and 87% of men) have higher English fluency rates. Women are slightly more likely to become naturalized U.S. citizens than men. Typically, men emigrate to the U.S. at a younger age, about two years earlier on average. For example, women from Honduras arrive at an average age of 36.48, while men arrive at 34.42, often resulting in longer U.S. residency for men—Honduran men report an average of 37.16 years compared to women's 36.17 years. However, Guatemala is an exception; despite migrating at a younger age (32.05), Guatemalan men have spent fewer years in the U.S. (38.75) compared to women (39.26).
+Many of these migrants have surprisingly low English fluency rates, with women generally less likely to speak English than men. The lowest fluency rates are among migrants from the Dominican Republic, where only 60% of female and 70% of male migrants speak English, and Mexico, with 65% of women and 75% of men speaking English. In contrast, migrants from Cuba (71% of women and 79% of men), Colombia (83% of women and 88% of men), and Guatemala (79% of women and 87% of men) have higher English fluency rates. Women are slightly more likely to become naturalized U.S. citizens than men. Typically, men emigrate to the U.S. at a younger age, about two years earlier on average. For example, women from Honduras arrive at an average age of 36.48, while men arrive at 34.42, often resulting in longer U.S. residency for men—Honduran men report an average of 37.16 years compared to women's 36.17 years. However, Guatemala is an exception; despite migrating at a younger age (32.05), Guatemalan men have spent fewer years in the U.S. (38.75) compared to women (39.26).
 
-Men are more likely to have a college degree across all groups: Guatemalan men (12%) compared to women (8%), Honduran men (14%) versus women (11%), and Salvadoran men (10%) against women (5%). The largest gender gap is among Colombian migrants, with 24% of men holding a college degree compared to 16% of women. The least educated groups are Mexican migrants (6% of men and 4% of women with college degrees) and those from the Dominican Republic (9% for men and 7% for women). These patterns contrast with their native countries, where women are more likely to have a college degree. Overall, migrant groups tend to have lower educational attainment than the broader U.S. population, with many having only primary or less education.
+Men are more likely to have a college degree across all groups: Guatemalan men (12%) compared to women (8%), Honduran men (14%) versus women (11%), and Salvadoran men (10%) against women (5%). The largest gender gap is among Colombian migrants, with 24% of men holding a college degree compared to 16% of women. The least educated groups are Mexican migrants (6% of men and 4% of women with college degrees) and those from the Dominican Republic (9% for men and 7% for women). These patterns are similar as their counterparts from their native countries, where men are more likely to have a college degree. Overall, migrant groups tend to have lower educational attainment than the broader U.S. population, with many having only primary or less education.
 
 ### Race and nativity in US migrants
 
-Table 3 compares racial categories among Hispanic and non-Hispanic groups, focusing on Black, White, and Other racial identities. Notably, the average ages across these groups are quite similar. Both Hispanic migrant and native Blacks are much less likely to be married or cohabitating, with rates of 28% and 27%, respectively. In contrast, individuals identifying as White, whether Hispanic migrant or native, are more likely to be married or cohabitating. Black migrants are slightly more likely to speak English but are less likely to become naturalized citizens. They also tend to immigrate at an older age and spend fewer years in the U.S., while Whites and those of other Hispanic races have similar immigration patterns. White Hispanic migrants have slightly longer U.S. residency. Interestingly, the college degree gap between Black and White migrants is nonexistent; both groups are equally likely to earn a degree. This contrasts with native populations, where only 17% of Black men hold a college degree compared to 36% of White men. Hispanic migrants identifying as a race other than White or Black are the least likely to have a college degree and most likely to have less than primary education, with 33% of women and 32% of men in this category having less than a primary education.
+Table 3 compares racial categories among Hispanic and non-Hispanic groups, focusing on Black, White, and Other racial identities. Notably, the average ages across these groups are quite similar. Both Hispanic migrant and native Blacks are much less likely to be married or cohabitating, with rates of 28% and 27%, respectively. In contrast, individuals identifying as White, whether Hispanic migrant or native, are more likely to be married or cohabitating. Black migrants are slightly more likely to speak English but are less likely to become naturalized citizens. They also tend to immigrate at an older age and spend fewer years in the U.S., while Whites and those of other Hispanic races have similar immigration patterns. White Hispanic migrants have slightly longer U.S. residency. Interestingly, the college degree gap between Black and White migrants is nonexistent; both groups are equally likely to earn a degree. This contrasts with US native populations, where only 17% of Black men hold a college degree compared to 36% of White men. Hispanic migrants identifying as a race other than White or Black are the least likely to have a college degree and most likely to have less than primary education, with 33% of women and 32% of men in this category having less than a primary education.
 
 ## Discussion
 
 - To look for further patterns beyond census data that might help explain things like younger ages, younger ages of arrivial, english speaking rates, etc. 
 
-
-\newpage
-
-::: {.table-wrapper}
 \begin{landscape}
+
 \begin{table}[ht]
 \centering
-\caption{Summary Statistics by Country and Sex For Hispanics in Their Native Countries} 
-\label{table1}
+\caption{Demographic Information by Gender and Country}
 \begingroup\small
 \begin{tabular}{l|l|lllllllll}
   \hline
@@ -85,24 +83,23 @@ Women & Age & 72.48 & 73.67 & 73.44 & 73.5 & 72.63 & 72.38 & 72.73 & 74.28 & 73.
    & Secondary & 0.06 & 0.15 & 0.06 & 0.04 & 0.04 & 0.04 & 0.1 & 0.33 & 0.63 \\ 
    & University & 0.02 & 0.05 & 0.03 & 0.01 & 0.01 & - & 0.05 & 0.1 & 0.25 \\ 
    & Unknown & 0.03 & - & - & - & - & - & - & - & - \\ 
-  Men & Age & 72.43 & 73.58 & 73.29 & 73.93 & 73.17 & 73.01 & 72.84 & 73.51 & 73.13 \\ 
+Men & Age & 72.43 & 73.58 & 73.29 & 73.93 & 73.17 & 73.01 & 72.84 & 73.51 & 73.13 \\ 
    & Married/Cohabiting & 0.67 & 0.66 & 0.67 & 0.7 & 0.79 & 0.72 & 0.73 & 0.67 & 0.7 \\ 
    & Less than Primary & 0.6 & 0.24 & 0.72 & 0.78 & 0.82 & 0.85 & 0.45 & 0.24 & 0.03 \\ 
    & Primary & 0.26 & 0.5 & 0.18 & 0.15 & 0.13 & 0.1 & 0.35 & 0.28 & 0.08 \\ 
    & Secondary & 0.06 & 0.2 & 0.06 & 0.05 & 0.03 & 0.04 & 0.09 & 0.35 & 0.55 \\ 
    & University & 0.04 & 0.06 & 0.04 & 0.02 & 0.02 & 0.01 & 0.12 & 0.13 & 0.33 \\ 
    & Unknown & 0.04 & - & - & - & - & - & - & - & - \\ 
-   \hline
+\hline
 \end{tabular}
 \endgroup
 \end{table}
 
-
+\newpage
 
 \begin{table}[ht]
 \centering
 \caption{Summary Statistics by Country and Sex} 
-\label{table2}
 \begingroup\small
 \begin{tabular}{l|l|lllllllll}
   \hline
@@ -133,11 +130,9 @@ Women & Age & 75.35 & 72.96 & 73.97 & 72.63 & 72.36 & 72.61 & 73.07 & 73.2 & 73.
 \endgroup
 \end{table}
 
-
 \begin{table}[ht]
 \centering
 \caption{Summary Statistics by Country and Sex} 
-\label{table3}
 \begingroup\small
 \begin{tabular}{l|l|p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}}
   \hline
@@ -168,10 +163,5 @@ Women & Age & 73.74 & 73.75 & 73.14 & 73.19 & 73.87 & 72.96 & 73.17 \\
 \endgroup
 \end{table}
 
-
 \end{landscape}
-:::
-
-\newpage
-
 # References

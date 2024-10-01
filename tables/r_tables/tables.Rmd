@@ -34,7 +34,7 @@ create_table_for_sex_international <- function(sex_value) {
     filter(sex == sex_value) %>%
     group_by(country) %>%
     summarise(
-    mean_age = mean(age, na.rm = TRUE),
+    mean_age = weighted.mean(age, perwt_age_standardized, na.rm = TRUE),
     mean_married_cohab = weighted.mean(married_cohab, perwt_age_standardized, na.rm = TRUE),
     mean_less_than_primary_completed = weighted.mean(less_than_primary_completed, perwt_age_standardized, na.rm = TRUE),
     mean_primary_completed = weighted.mean(primary_completed, perwt_age_standardized, na.rm = TRUE),
