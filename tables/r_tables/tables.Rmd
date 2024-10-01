@@ -81,8 +81,7 @@ table_md <- kbl(combined_table1, format = "markdown", label = "tab:table1", capt
 writeLines(as.character(table_md), "/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table.md")
 
 table1_code <- xtable(combined_table1, caption = "Summary Statistics by Country and Sex For Hispanics in Their Native Countries", 
-                      align = "ll|l|lllllllll",
-                      label = "table1")
+                      align = "ll|l|lllllllll")
 
 
 sink("/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table1.tex")
@@ -148,8 +147,7 @@ combined_table <- combined_table %>%
 print(combined_table)
 
 table2_code <- xtable(combined_table, caption = "Summary Statistics by Country and Sex", 
-                      align = "ll|l|lllllllll",
-                      label = "table2")
+                      align = "ll|l|lllllllll")
 
 
 sink("/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table2.tex")
@@ -220,8 +218,7 @@ combined_table <- combined_table %>%
 print(combined_table)
 
 table3_code <- xtable(combined_table, caption = "Summary Statistics by Country and Sex", 
-                      align = "ll|l|p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}",
-                      label = "table3")
+                      align = "ll|l|p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}")
 
 
 sink("/Users/chrissoria/Documents/Research/us_international_ses/tables/r_tables/table3.tex")
